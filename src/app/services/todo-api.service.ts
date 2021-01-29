@@ -31,5 +31,7 @@ export class TodoAPIService {
     return this.http.delete(url,httpOptions);
   }
 
-
+  addTodo(todo:Todo):Observable<Todo>{
+    return this.http.post<Todo>(this.todosURL,todo,httpOptions);
+  }
 }

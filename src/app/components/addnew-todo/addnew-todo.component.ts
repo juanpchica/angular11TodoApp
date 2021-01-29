@@ -8,7 +8,7 @@ import { Todo } from 'src/app/Todo';
 })
 export class AddnewTodoComponent implements OnInit {
   title: "";
-  @Output() addItem = new EventEmitter<Todo>();
+  @Output() addItem = new EventEmitter<any>();
   constructor() { }
 
   ngOnInit(): void {
@@ -16,12 +16,13 @@ export class AddnewTodoComponent implements OnInit {
 
   addTodo(){
     const todo:Todo = {
-      id:1,
-      userId:2,
+      userId:1,
+      id: new Date().getTime(),
       title:this.title,
       complete:true
     }
     this.addItem.emit(todo);
+    this.title="";
   }
 
 }

@@ -39,6 +39,8 @@ export class ContentTodosComponent implements OnInit {
 
   addItem(todoItem:Todo){
     console.log(todoItem);
-    this.todos.push(todoItem);
+    this.todoApi.addTodo(todoItem).subscribe(data=>{
+      this.todos = [...this.todos,data]
+    })
   }
 }
