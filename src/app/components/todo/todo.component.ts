@@ -10,6 +10,7 @@ export class TodoComponent implements OnInit {
   @Input() todo:Todo; 
 
   @Output() removeTodo = new EventEmitter<Todo>();
+  @Output() toggleCompleted = new EventEmitter<Todo>();
   
   constructor() { }
 
@@ -17,10 +18,18 @@ export class TodoComponent implements OnInit {
   }
 
   validateClasses = () => {
-    return {"inactive":!this.todo.active};
+    return {"inactive":!this.todo.complete};
   }
   
   RemoveItem(todo:Todo){
     this.removeTodo.emit(todo);
+  }
+
+  completeTodo(){
+    this.todo.complete = !this.todo.complete;
+  }
+
+  toogleTodo(todo:Todo){
+    this.toggleCompleted.emit(todo);
   }
 }

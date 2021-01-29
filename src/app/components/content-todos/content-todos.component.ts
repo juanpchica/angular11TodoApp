@@ -16,17 +16,26 @@ export class ContentTodosComponent implements OnInit {
   constructor(private todoApi:TodoAPIService) { }
 
   ngOnInit(): void {
-    this.todos = this.todoApi.getTodos();
+    this.todoApi.getTodos().subscribe((data)=>{
+      console.log(data);
+      this.todos = data;
+    });
   }
 
-  addTodo(){
-    this.todos = [...this.todos,{id:5,title:this.title,active:true}];
-    //this.todos.push({title:this.title});
+  toggleCompleted(todoItem:Todo){
+    //console.log(todoItem);
+    this.todoApi.toggleCompleted(todoItem).subscribe((data)=>{
+      console.log(data);
+    });
   }
 
   removeTodo(todoItem:Todo){
     console.log(todoItem);
-    this.todos = this.todos.filter((todo)=>todo.id !== todoItem.id);
+    
+    this.todoApi.deleteTodo(todoItem).subscribe((data)=>{
+      console.log(data);
+      this.todos = this.todos.filter((todo)=>todo.id !== todoItem.id);
+    })
   }
 
 }

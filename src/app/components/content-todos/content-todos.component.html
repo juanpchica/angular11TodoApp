@@ -3,6 +3,7 @@
     *ngFor="let todo of todos" 
     [todo]="todo"
     (removeTodo)="removeTodo($event)"
+    (toggleCompleted)="toggleCompleted($event)"
     >
 </app-todo>
 
