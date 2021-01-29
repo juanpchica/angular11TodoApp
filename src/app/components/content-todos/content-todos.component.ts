@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TodoAPIService } from 'src/app/services/todo-api.service';
 import { Todo } from "../../Todo";
 
 @Component({
@@ -10,28 +11,12 @@ export class ContentTodosComponent implements OnInit {
 
   title: string = '';
 
-  todos: Todo[] = [
-    {
-      id:1,
-      title:"The first item",
-      active:true
-    },
-    {
-      id:2,
-      title:"The second item",
-      active:false
-    },
-    {
-      id:3,
-      title:"The Third item",
-      active:true
-    },
-    
-  ];
+  todos: Todo[];
 
-  constructor() { }
+  constructor(private todoApi:TodoAPIService) { }
 
   ngOnInit(): void {
+    this.todos = this.todoApi.getTodos();
   }
 
   addTodo(){
