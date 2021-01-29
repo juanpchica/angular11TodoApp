@@ -5,12 +5,14 @@ import {FormsModule} from "@angular/forms"
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ContentTodosComponent } from './components/content-todos/content-todos.component';
+import { TodoComponent } from './components/todo/todo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    ContentTodosComponent
+    ContentTodosComponent,
+    TodoComponent
   ],
   imports: [
     BrowserModule,

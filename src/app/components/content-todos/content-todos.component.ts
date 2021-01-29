@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Todo } from "../../Todo";
 
 @Component({
   selector: 'app-content-todos',
@@ -9,21 +10,21 @@ export class ContentTodosComponent implements OnInit {
 
   title: string = '';
 
-  todos: Object[] = [
+  todos: Todo[] = [
     {
       id:1,
       title:"The first item",
-      description:"This will be your first item to add in your "
+      active:true
     },
     {
       id:2,
       title:"The second item",
-      description:"This will be your second item to add in your "
+      active:false
     },
     {
       id:3,
       title:"The Third item",
-      description:"This will be your Third item to add in your "
+      active:true
     },
     
   ];
@@ -34,8 +35,13 @@ export class ContentTodosComponent implements OnInit {
   }
 
   addTodo(){
-    this.todos = [...this.todos,{title:this.title}];
+    this.todos = [...this.todos,{id:5,title:this.title,active:true}];
     //this.todos.push({title:this.title});
+  }
+
+  removeTodo(todoItem:Todo){
+    console.log(todoItem);
+    this.todos = this.todos.filter((todo)=>todo.id !== todoItem.id);
   }
 
 }

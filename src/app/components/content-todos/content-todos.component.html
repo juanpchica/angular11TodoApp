@@ -1,6 +1,8 @@
-<input name="title" [(ngModel)]="title">
-<ul *ngFor="let todo of todos">
-    <li>{{todo.title}}</li>
 
-</ul>
-<input type="button" (click)="addTodo()" value="push todo">
+<app-todo 
+    *ngFor="let todo of todos" 
+    [todo]="todo"
+    (removeTodo)="removeTodo($event)"
+    >
+</app-todo>
+
