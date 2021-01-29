@@ -10,7 +10,6 @@ import { Todo } from "../../Todo";
 export class ContentTodosComponent implements OnInit {
 
   title: string = '';
-
   todos: Todo[];
 
   constructor(private todoApi:TodoAPIService) { }
@@ -38,4 +37,8 @@ export class ContentTodosComponent implements OnInit {
     })
   }
 
+  addItem(todoItem:Todo){
+    console.log(todoItem);
+    this.todos.push(todoItem);
+  }
 }
